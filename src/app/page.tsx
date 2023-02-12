@@ -1,91 +1,52 @@
-import Image from 'next/image'
-import { Inter } from '@next/font/google'
-import styles from './page.module.css'
+"use client";
 
-const inter = Inter({ subsets: ['latin'] })
+import {
+  GithubLogo,
+  InstagramLogo,
+  LinkedinLogo,
+  TwitterLogo,
+} from "phosphor-react";
+import Image from "next/image";
+import hero from "@/../public/hero.jpg";
+import { HeroImageBackground } from "@/components/HeroImageBackground";
 
 export default function Home() {
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.tsx</code>
+    <section className="flex w-full h-full  justify-evenly items-center">
+      <div className="">
+        <div className="flex items-center gap-3">
+          <div className="bg-base-400 dark:bg-base-100 w-4 h-0.5" />
+          <span className="uppercase tracking-widest text-base-900 dark:text-base-400">
+            my name is
+          </span>
+        </div>
+        <h2 className="font-bold text-4xl uppercase">thiago calazans</h2>
+        <p className="max-w-[33rem] text-lg text-justify mt-10">
+          I am a passionate full-stack developer proficient in Typescript, React
+          and evolving in Node-JS. My love for programming led me to switch
+          careers and become a DEV. In my work, I emphasize the use of React, to
+          create elegant and interactive user interfaces. As proof of my skills,
+          I present my portfolio where you can see some of the projects I have
+          developed.
         </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+        <div className="mt-10 flex gap-5 text-4xl text-brand-primary">
+          <LinkedinLogo />
+          <GithubLogo />
+          <InstagramLogo />
+          <TwitterLogo />
         </div>
       </div>
-
-      <div className={styles.center}>
+      <div className="relative">
         <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
           priority
+          width={350}
+          height={400}
+          src={hero}
+          alt=""
+          className="absolute overflow-hidden z-10 rounded-2xl w-[21rem] h-[25rem] object-fill  "
         />
-        <div className={styles.thirteen}>
-          <Image src="/thirteen.svg" alt="13" width={40} height={31} priority />
-        </div>
+        <HeroImageBackground />
       </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://beta.nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={inter.className}>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p className={inter.className}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={inter.className}>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p className={inter.className}>Explore the Next.js 13 playground.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={inter.className}>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p className={inter.className}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
-  )
+    </section>
+  );
 }
