@@ -36,7 +36,7 @@ export default function Home() {
           <TwitterLogo />
         </div>
       </div>
-      <div className="relative">
+      <div className="hidden lg:block lg:relative">
         <Image
           priority
           width={350}
