@@ -1,52 +1,32 @@
-"use client";
+import { AboutMe } from "./AboutMe";
+import { Articles } from "./Articles";
+import { CarrerPath } from "./CarrerPath";
+import { FeaturedPortfolios } from "./FeaturedPortfolios";
+import { Skills } from "./Skills";
 
-import {
-  GithubLogo,
-  InstagramLogo,
-  LinkedinLogo,
-  TwitterLogo,
-} from "phosphor-react";
-import Image from "next/image";
-import hero from "@/../public/hero.jpg";
-import { HeroImageBackground } from "@/components/HeroImageBackground";
+export interface Projects {
+  albumId: number;
+  id: number;
+  title: string;
+  url: string;
+  thumbnailUrl: string;
+}
 
-export default function Home() {
+async function getData() {
+  const res = await fetch("https://jsonplaceholder.typicode.com/photos");
+  return res.json();
+}
+
+export default async function Home() {
+  const data: Projects[] = await getData();
+
   return (
-    <section className="flex w-full h-full  justify-evenly items-center">
-      <div className="">
-        <div className="flex items-center gap-3">
-          <div className="bg-base-400 dark:bg-base-100 w-4 h-0.5" />
-          <span className="uppercase tracking-widest text-base-900 dark:text-base-400">
-            my name is
-          </span>
-        </div>
-        <h2 className="font-bold text-4xl uppercase">thiago calazans</h2>
-        <p className="max-w-[33rem] text-lg text-justify mt-10">
-          I am a passionate full-stack developer proficient in Typescript, React
-          and evolving in Node-JS. My love for programming led me to switch
-          careers and become a DEV. In my work, I emphasize the use of React, to
-          create elegant and interactive user interfaces. As proof of my skills,
-          I present my portfolio where you can see some of the projects I have
-          developed.
-        </p>
-        <div className="mt-10 flex gap-5 text-4xl text-brand-primary">
-          <LinkedinLogo />
-          <GithubLogo />
-          <InstagramLogo />
-          <TwitterLogo />
-        </div>
-      </div>
-      <div className="hidden lg:block lg:relative">
-        <Image
-          priority
-          width={350}
-          height={400}
-          src={hero}
-          alt=""
-          className="absolute overflow-hidden z-10 rounded-2xl w-[21rem] h-[25rem] object-fill  "
-        />
-        <HeroImageBackground />
-      </div>
-    </section>
+    <>
+      <AboutMe />
+      <Skills />
+      <FeaturedPortfolios data={data} />
+      <CarrerPath />
+      <Articles data={data} />
+    </>
   );
 }
